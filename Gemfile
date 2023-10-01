@@ -4,10 +4,6 @@ ruby '2.6.6'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.11.3'
 # Use sqlite3 as the database for Active Record
-group :development, :test do
-  gem 'sqlite3', '~> 1.3.0'
-end
-
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -32,6 +28,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+group :development, :test do
+  gem 'sqlite3', '~> 1.3.0'
+end
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -47,4 +46,3 @@ group :production do
   gem 'pg', '~> 0.21' # for Heroku deployment
   gem 'rails_12factor'
 end
-
