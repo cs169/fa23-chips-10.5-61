@@ -1,0 +1,15 @@
+<h1><%= @representative.name %></h1>
+
+<dl>
+  <dt>OCD ID:</dt>
+  <dd><%= @representative.ocdid %></dd>
+
+  <dt>Contact Address:</dt>
+  <dd><%= @representative.contact_address %></dd>
+
+  <dt>Political Party:</dt>
+  <dd><%= @representative.political_party %></dd>
+
+  <dt>Photo:</dt>
+  <dd><%= image_tag @representative.photo.url if @representative.photo? %></dd>
+</dl>
