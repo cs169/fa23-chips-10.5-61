@@ -1,0 +1,20 @@
+project:
+  name: 'CS169-fa23-61'
+  owner: 'fa23'
+  teamId: '61'
+  identities: {}
+  notifications:
+    email: 'ahagiwara@berkeley.edu'
+  members:
+    member1:
+      name: 'Anna'
+      surname: 'Hagiwara' 
+      githubUsername: 'ahagiwara'
+    member2:
+      name: 'Saloni'
+      surname: 'Khule' 
+      githubUsername: 'saloni-khule'
+    member3:
+      name: ' Benjamin'
+      surname: 'Gonzva' 
+      githubUsername: 'avznog'
