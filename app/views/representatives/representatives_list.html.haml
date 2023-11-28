@@ -1,0 +1,15 @@
+%table.table.table-striped.table-hover
+  %thead.thead-dark
+    %tr
+      %th Name
+      %th Office
+      %th Links
+  %tbody
+    - @representatives.each do |rep|
+      %tr
+        %td= rep.name
+        %td= rep.title
+        %td
+          = link_to representative_news_items_path(rep.id), class: 'btn btn-primary' do
+            %i.fas.fa-newspaper
+            News Articles
