@@ -16,10 +16,25 @@ class Representative < ApplicationRecord
           ocdid_temp = office.division_id
         end
       end
+      
+      print(official.address ? official.address[0].line1 : 'NOT')
+      # ? check if rep exists
+      existing_rep = Representative.find_by(name: official.name)
 
-      rep = Representative.create!({ name: official.name, ocdid: ocdid_temp,
-          title: title_temp })
-      reps.push(rep)
+      if(existing_rep)
+        existing_rep.update!({ ocdid: ocdid_temp, title: title_temp,
+        street: official.address ? official.address[0].line1 : 'TBD',
+        city: official.address ? official.address[0].city : 'TBD', state: official.address ? official.address[0].state : 'TBD', zip: official.address ? official.address[0].zip : 'TBD',
+        party: official.party, photo: official.photo_url })
+        reps.push(existing_rep)
+      else
+        # ? update representative : add address[0], party & photo
+        rep = Representative.create!({ name: official.name, ocdid: ocdid_temp,
+            title: title_temp, street: official.address ? official.address[0].line1 : 'TBD',
+            city: official.address ? official.address[0].city : 'TBD', state: official.address ? official.address[0].state : 'TBD', zip: official.address ? official.address[0].zip : 'TBD',
+            party: official.party, photo: official.photo_url })
+        reps.push(rep)
+      end
     end
 
     reps

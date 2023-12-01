@@ -1,0 +1,42 @@
+.row.mt-4
+  .col-12.col-md-8.offset-md-2
+    .card.mt-4
+      .card-body.text-center
+        %h3.card-title.mb-4= @representative.name
+        %img.img-fluid.mb-4{ src: @representative.photo, alt: @representative.name }
+        %dl.row
+          %dt.col-sm-4.text-md-right OCDID:
+          %dt.col-sm-8
+            %p= @representative.ocdid
+
+        %dl.row
+          %dt.col-sm-4.text-md-right Title:
+          %dt.col-sm-8
+            %p= @representative.title
+
+        %dl.row
+          %dt.col-sm-4.text-md-right Street:
+          %dt.col-sm-8
+            %p= @representative.street
+
+        %dl.row
+          %dt.col-sm-4.text-md-right City:
+          %dt.col-sm-8
+            %p= @representative.city
+
+        %dl.row
+          %dt.col-sm-4.text-md-right State:
+          %dt.col-sm-8
+            %p= @representative.state
+
+        %dl.row
+          %dt.col-sm-4.text-md-right Zip Code:
+          %dt.col-sm-8
+            %p= @representative.zip
+
+        %dl.row
+          %dt.col-sm-4.text-md-right Political Party:
+          %dt.col-sm-8
+            %p= @representative.party
+
+        = link_to 'Back', representatives_path, class: 'btn btn-secondary mt-3'
