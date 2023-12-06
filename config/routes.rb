@@ -40,4 +40,10 @@ Rails.application.routes.draw do
                                                                       via: [:delete]
     end
     get '/search/(:address)' => 'search#search', :as => 'search_representatives'
+
+
+    # Routes for CampaignFinance
+    resources :campaign_finance, only: %i[index] do
+        get 'search', on: :collection
+    end
 end
