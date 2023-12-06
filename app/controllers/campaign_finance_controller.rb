@@ -2,12 +2,10 @@
 
 class CampaignFinanceController < ApplicationController
   def index; end
-
   def search
+    available_categories = ['Candidate Loan', 'Contribution Total', 'Debts Owed', 'Disbursements Total', 'End Cash', 'Individual Total', 'PAC Total', 'Receipts Total', 'Refund Total']
     available_cycles = %w[2010 2012 2014 2016 2018 2020]
-    available_categories = ['Candidate Loan', 'Contribution Total', 'Debts Owed', 'Disbursements Total', 'End Cash',
-                             'Individual Total', 'PAC Total', 'Receipts Total', 'Refund Total']
-
+    
     selected_cycle = params[:cycle]
     selected_category = params[:category]
 
@@ -15,7 +13,7 @@ class CampaignFinanceController < ApplicationController
       load_top_20_candidates(selected_cycle, selected_category)
       render :search
     else
-      flash[:alert] = 'Please select both election cycle and category.'
+      flash[:alert] = 'Select both a category and year to search.'
       redirect_to campaign_finance_index_path
     end
   end
@@ -39,8 +37,8 @@ class CampaignFinanceController < ApplicationController
       'Receipts Total'      => 'total_receipts',
       'Refund Total'        => 'total_refunds'
     }
+    @selected_category_api = category_mapping[selected_category]
     @selected_category = selected_category
     @selected_cycle = selected_cycle
-    @selected_category_api = category_mapping[selected_category]
   end
 end
