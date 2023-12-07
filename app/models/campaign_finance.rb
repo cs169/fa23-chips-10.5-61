@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
 class CampaignFinance < ApplicationRecord
-  def self.fetch_top_20_candidates(selected_cycle, selected_category)
-    api_key = '9lcjslvwVjbqtX0KcQQ3W9rFm316caQQ2T89n4xA'
+  def self.fetch_top_20_candidates(selected_cycle, selected_category, api_key='9lcjslvwVjbqtX0KcQQ3W9rFm316caQQ2T89n4xA')
     connection = Faraday.new do |conn|
       conn.url_prefix = 'https://api.propublica.org/campaign-finance/v1/'
       conn.headers['X-API-Key'] = api_key
