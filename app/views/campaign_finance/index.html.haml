@@ -1,0 +1,19 @@
+.row.mt-2.jumbotron
+    .container.d-flex.justify-content-center.mb-4.mt-4
+        %h1.text-center Search for Campaign Finance
+
+    .container.d-flex.justify-content-center
+        = form_tag search_campaign_finance_index_path, method: :get do
+            .form-group.row
+                %label.col-form-label.sr-only
+                    Select Cycle:
+                %select.btn.btn-secondary.m-2.dropdown-toggle{ name: 'cycle' }
+                    - @available_cycles.each do |option|
+                        %option{ value: option, selected: (params[:cycle] == option) }= option
+                %label.col-form-label.sr-only
+                    Select Category:
+                %select.btn.btn-secondary.m-2.dropdown-toggle{ name: 'category' }
+                    - @available_categories.each do |option|
+                        %option{ value: option, selected: (params[:category] == option) }= option
+                .actions
+                    = submit_tag 'Search', class: 'btn btn-primary m-2'

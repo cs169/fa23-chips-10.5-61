@@ -1,0 +1,28 @@
+.container-fluid
+    .row
+        .col-md-8.offset-md-2.mt-4
+            - if @top_20_candidates.present?
+                %h2.text-center Top 20 Candidates #{@selected_category}
+                %h3.text-center #{@selected_cycle} Cycle
+                .table-responsive-md.pt-4
+                    %table.table.table-striped.table-hover#events
+                        %caption Table of Top 20 Candidates
+                        %thead.thead-dark
+                            %tr
+                                %th Candidate Name
+                                %th Party
+                                %th= @selected_category
+
+                        %tbody
+                            - @top_20_candidates.each do |candidate|
+                                %tr
+                                    %td= candidate['name']
+                                    %td= candidate['party']
+                                    %td= number_to_currency(candidate[@selected_category_api])
+            - else
+                %p.text-center No data to display.
+
+.row.mt-2
+    .col-12.col-md-6.offset-md-7.col-xl-8.offset-xl-8.mb-4
+        = link_to campaign_finance_index_path, class: 'btn btn-primary' do
+            Back Campaign Finance
